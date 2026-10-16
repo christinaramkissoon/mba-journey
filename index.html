@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>His MBA Journey | 2025–2026</title>
+    <!-- Google Fonts for Modern Body & Whimsical Handwriting -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f6f5f2;
+            --card-bg: #ffffff;
+            --text-main: #2b2b2b;
+            --accent-blue: #1e3a8a;
+            --tape-color: rgba(220, 215, 200, 0.65);
+            --sticky-yellow: #fef08a;
+            --sticky-pink: #fbcfe8;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-hand: 'Caveat', cursive;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* --- Header & SAMS Logo --- */
+        header {
+            background: #ffffff;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+        }
+
+        .logo-container img {
+            max-width: 140px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        /* --- Countdown Banner --- */
+        .countdown-box {
+            background: var(--accent-blue);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .countdown-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        #timer {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 0.2rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* --- Layout Grid --- */
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .chapter {
+            margin-bottom: 4rem;
+        }
+
+        .chapter-title {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            border-bottom: 2px dashed #cbd5e1;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Scrapbook Cards with Tape --- */
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.8rem;
+            position: relative;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .card.tilt-left { transform: rotate(-1deg); }
+        .card.tilt-right { transform: rotate(1deg); }
+
+        .card:hover {
+            transform: rotate(0deg) translateY(-2px);
+        }
+
+        /* Washi Tape Effect */
+        .tape {
+            position: absolute;
+            width: 110px;
+            height: 28px;
+            background-color: var(--tape-color);
+            backdrop-filter: blur(2px);
+            border-left: 2px dashed rgba(0,0,0,0.1);
+            border-right: 2px dashed rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+
+        .tape-top-left {
+            top: -12px;
+            left: 20px;
+            transform: rotate(-5deg);
+        }
+
+        .tape-top-right {
+            top: -12px;
+            right: 20px;
+            transform: rotate(4deg);
+        }
+
+        /* --- Post-it Sticky Note Effect --- */
+        .postit {
+            background: var(--sticky-yellow);
+            color: #1c1917;
+            padding: 1.2rem;
+            border-radius: 2px;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+            font-family: var(--font-hand);
+            font-size: 1.35rem;
+            line-height: 1.3;
+            transform: rotate(2deg);
+            margin-top: 1rem;
+        }
+
+        .postit-pink {
+            background: var(--sticky-pink);
+            transform: rotate(-2deg);
+        }
+
+        /* --- Image Placeholders --- */
+        .photo-placeholder {
+            width: 100%;
+            height: 240px;
+            background: #e2e8f0;
+            border: 2px dashed #94a3b8;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 0.95rem;
+            margin: 1rem 0;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .photo-img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+
+        /* --- Code Snippet Style --- */
+        .code-box {
+            background: #1e1e1e;
+            color: #4ec9b0;
+            font-family: monospace;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        /* --- Footer / Envelope --- */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <!-- SAMS Logo -->
+            <img src="sams-logo.png" alt="SAMS Logo" onerror="this.style.display='none'">
+        </div>
+        <h1>His MBA Journey</h1>
+        <p class="subtitle">Finance, Big Data & FinTech | SAMS 2025–2026</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Countdown Timer -->
+        <div class="countdown-box">
+            <div class="countdown-title">Countdown to Graduation Day</div>
+            <div id="timer">Loading countdown...</div>
+        </div>
+
+        <!-- Dedication -->
+        <section class="chapter">
+            <div class="card tilt-left">
+                <div class="tape tape-top-left"></div>
+                <h2 style="font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--accent-blue);">For You</h2>
+                <p style="font-size: 1.05rem; color: #475569;">
+                    This scrapbook is a collection of your MBA journey — the late nights, the breakthroughs, the challenges, the growth, and every moment you showed discipline and heart.
+                </p>
+                <div class="postit postit-pink">
+                    I wanted you to have something you can look back on long after the deadlines fade. I’m so proud of you! ❤️
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 1 -->
+        <section class="chapter">
+            <h2 class="chapter-title">Chapter 1: The Decision</h2>
+            <div class="card tilt-right">
+                <div class="tape tape-top-right"></div>
+                <h3>First Class Kick-off</h3>
+                <p style="color: #64748b; font-size: 0.9rem;">Thursday, 25th September 2025</p>
+                
+                <!-- Semester Printout Placeholder or Image -->
+                <img src="semester-printout.jpg" alt="Semester Printout" class="photo-img" onerror="this.onerror=null; this.className='photo-placeholder'; this.outerHTML='<div class=\'photo-placeholder\'>📷 Semester Printout Image Placeholder</div>';">
+
+                <div class="postit">
+                    "Every journey begins with a bold decision. Day 1."
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 2: Trimester 1 -->
+        <section class="chapter">
+            <h2 class="chapter-title">Chapter 2: Trimester 1 Begins</h2>
+            
+            <div class="card tilt-left">
+                <div class="tape tape-top-left"></div>
+                <h3>1. Principles of Marketing Management</h3>
+                <div class="photo-placeholder">📷 Insert Assignment Snippet / Photo Here</div>
+                <div class="postit">
+                    Where the reading list hit him for the first time! 📚
+                </div>
+            </div>
+
+            <div class="card tilt-right">
+                <div class="tape tape-top-right"></div>
+                <h3>2. Finance for Decision Making</h3>
+                <div class="photo-placeholder">📷 Insert Excel Chart / Assignment Screenshot Here</div>
+                <div class="postit postit-pink">
+                    Excel became his best friend and worst enemy. 😂
+                </div>
+            </div>
+
+            <div class="card tilt-left">
+                <div class="tape tape-top-left"></div>
+                <h3>3. Project Management</h3>
+                <div class="photo-placeholder">📷 Insert Gantt Chart / Project Screenshot Here</div>
+                <p style="color: #475569; margin-top: 0.5rem;">Learning to organize chaos like a pro.</p>
+            </div>
+        </section>
+
+        <!-- Chapter 3 & 4: Leadership & Milestones -->
+        <section class="chapter">
+            <h2 class="chapter-title">Chapter 3 & 4: Early Wins & Leadership</h2>
+            
+            <div class="card tilt-right">
+                <div class="tape tape-top-right"></div>
+                <span style="background: #fef3c7; color: #d97706; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; font-size: 0.8rem;">MILESTONE</span>
+                <h3 style="margin-top: 0.5rem;">Class Representative Nomination ⭐</h3>
+                <div class="photo-placeholder">📷 Insert WhatsApp Screenshot or Nomination Message Here</div>
+                <div class="postit">
+                    "Leadership isn't a title — it's a way of showing up. They saw what he didn't even see in himself!"
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 5 & 6: Advanced Studies & Python -->
+        <section class="chapter">
+            <h2 class="chapter-title">Chapter 5 & 6: The Deep End</h2>
+            
+            <div class="card tilt-left">
+                <div class="tape tape-top-left"></div>
+                <h3>Analytics & Financial Data Analysis using Python</h3>
+                <div class="code-box">
+                    >>> import pandas as pd<br>
+                    >>> mba_growth = pd.DataFrame({"Sleep": [0], "Python_Skills": ["100%"]})<br>
+                    >>> print("Status: Mastered!")
+                </div>
+                <div class="postit postit-pink">
+                    Python: 1 | Sleep Schedule: 0 🐍💻
+                </div>
+            </div>
+
+            <div class="card tilt-right">
+                <div class="tape tape-top-right"></div>
+                <h3>Post Graduate Major Project</h3>
+                <div class="photo-placeholder">📷 The Final Boss: Research Topic Placeholder</div>
+            </div>
+        </section>
+
+        <!-- Chapter 7: The Final Stretch & Graduation -->
+        <section class="chapter">
+            <h2 class="chapter-title">Chapter 7: Graduation Day</h2>
+            
+            <div class="card tilt-left" style="text-align: center; padding: 2.5rem 1.5rem;">
+                <div class="tape tape-top-left"></div>
+                <div class="tape tape-top-right"></div>
+                <h2 style="color: var(--accent-blue);">17th November 2026</h2>
+                <p style="color: #64748b; margin-bottom: 1rem;">The moment all the hard work pays off.</p>
+                <div class="photo-placeholder" style="height: 280px;">🎓 Reserved for His Graduation Photo & Certificate</div>
+                <div class="postit" style="display: inline-block; text-align: left; margin-top: 1.5rem;">
+                    "He did it." 🎉✨
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Made with ❤️ for His MBA Graduation | SAMS 2025–2026</p>
+    </footer>
+
+    <!-- Countdown Timer Script -->
+    <script>
+        const gradDate = new Date("November 17, 2026 00:00:00").getTime();
+
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = gradDate - now;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                document.getElementById("timer").innerHTML = "GRADUATION DAY IS HERE! 🎓🎉";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = 
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+        }, 1000);
+    </script>
+</body>
+</html>
