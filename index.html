@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeremi's MBA Journey | Interactive Flipbook Scrapbook</title>
+    <title>Jeremi's MBA Journey | An Interactive Scrapbook</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -238,9 +238,9 @@
             <button onclick="goToPage(1)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">1. Dedication</button>
             <button onclick="goToPage(2)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">2. Decision</button>
             <button onclick="goToPage(3)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">3. Trimester 1</button>
-            <button onclick="goToPage(4)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">4. Leadership</button>
-            <button onclick="goToPage(5)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">5. Python & Data</button>
-            <button onclick="goToPage(6)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">6. Hard Days</button>
+            <button onclick="goToPage(4)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">4. Trimester 2</button>
+            <button onclick="goToPage(5)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">5. Trimester 3</button>
+            <button onclick="goToPage(6)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">6. Little Things in Between</button>
             <button onclick="goToPage(7)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">7. Graduation</button>
         </div>
     </nav>
@@ -399,17 +399,17 @@
                 '<div>' +
                     '<div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-6">' +
                         '<span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Page 1 • Prologue</span>' +
-                        '<span class="text-xs text-slate-400 font-mono">SAMS MBA Journey</span>' +
+                        '<span class="text-xs text-slate-400 font-mono">Jeremi's MBA Journey at SAMS</span>' +
                     '</div>' +
                     '<h2 class="text-2xl md:text-3xl font-extrabold text-navy-800 mb-4">Dedicated To Jeremi</h2>' +
                     '<div class="relative bg-white p-6 md:p-8 rounded-xl shadow-md border border-slate-200 max-w-2xl mx-auto my-4 rotate-[1deg]">' +
                         '<div class="washi-tape tape-tl"></div>' +
-                        '<p class="text-slate-700 text-base md:text-lg leading-relaxed mb-4">This scrapbook is a collection of your MBA journey — the late nights, the breakthroughs, the challenges, the growth, and every single moment you showed discipline and heart.</p>' +
+                        '<p class="text-slate-700 text-base md:text-lg leading-relaxed mb-4">This scrapbook is a collection of your MBA journey-the late nights, the breakthroughs, the challenges, the growth, and every single moment you showed discipline and heart.</p>' +
                         '<p class="text-slate-700 text-base md:text-lg leading-relaxed">I wanted you to have something you can look back on long after the assignments and deadlines fade. I’m so proud of you, and I can\'t wait to see all that you achieve.</p>' +
                     '</div>' +
                 '</div>' +
                 '<div class="sticky-note bg-postit-pink p-4 rounded max-w-md ml-auto rotate-[-2deg] text-slate-800 text-lg md:text-xl font-bold">' +
-                    '"Every late night was a step closer to where you belong. With all my support! ❤️"' +
+                    '"Every late night was a step closer to where you belong. With all my support❤️"' +
                 '</div>' +
             '</div>',
 
@@ -427,11 +427,11 @@
                             '<div class="text-xs font-bold text-blue-900 uppercase tracking-wider mb-1">First Class Kick-off</div>' +
                             '<div class="text-lg font-bold text-slate-800">Thursday, 25th September 2025</div>' +
                             '<p class="text-sm text-slate-600 mt-2 mb-3">The official start of the MBA in Finance, Big Data & FinTech at SAMS.</p>' +
-                            '<div class="mt-2 rounded-xl overflow-hidden border-2 border-amber-400/40 shadow-md interactive-img cursor-pointer max-w-[280px]" onclick="openImageModal(\'firstday_calendar.gif\', \'September 25th, 2025 • Day 1 Circled on Calendar\')">' +
+                            '<div class="mt-2 rounded-xl overflow-hidden border-2 border-amber-400/40 shadow-md interactive-img cursor-pointer max-w-[280px]" onclick="openImageModal(\'firstday_calendar.gif\')">' +
                                 '<img src="firstday_calendar.gif" alt="First Day Calendar Animation" class="w-full h-auto object-cover rounded-lg" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;p-4 bg-slate-100 text-center text-xs text-slate-500 font-bold rounded-lg border border-dashed border-slate-300&quot;>📅 upload firstday_calendar.gif</div>\';">' +
                             '</div>' +
                         '</div>' +
-                        '<div class="polaroid interactive-img rotate-[-2deg] mx-auto max-w-[240px]" onclick="openImageModal(\'semester-printout.jpg\', \'Official Schedule & First Day Kickoff\')">' +
+                        '<div class="polaroid interactive-img rotate-[-2deg] mx-auto max-w-[240px]" onclick="openImageModal(\'semester-printout.jpg\')">' +
                             '<img src="semester-printout.jpg" alt="Semester Printout" class="w-full h-44 object-cover rounded" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;w-full h-44 bg-slate-100 flex flex-col items-center justify-center p-3 text-center border-2 border-dashed border-slate-300 rounded&quot;><span class=&quot;text-2xl mb-1&quot;>📄</span><span class=&quot;text-xs text-slate-500 font-bold&quot;>Semester Printout Photo</span></div>\';">' +
                             '<div class="font-hand text-base font-bold text-slate-700 mt-2">Official Schedule Uploaded!</div>' +
                         '</div>' +
@@ -455,13 +455,13 @@
 
                     '<div class="grid grid-cols-3 gap-2 mb-4">' +
                         '<button onclick="setTri1Tab(\'mkt\')" class="module-tab-btn py-2 px-2.5 rounded-xl border text-xs font-bold text-center flex items-center justify-center gap-1.5 ' + (activeTri1Tab === 'mkt' ? 'active' : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50') + '">' +
-                            '<span>📣</span> <span class="truncate">1. Marketing Mgmt</span>' +
+                            '<span>📣</span> <span class="truncate">1. Principles of Marketing Management</span>' +
                         '</button>' +
                         '<button onclick="setTri1Tab(\'fin\')" class="module-tab-btn py-2 px-2.5 rounded-xl border text-xs font-bold text-center flex items-center justify-center gap-1.5 ' + (activeTri1Tab === 'fin' ? 'active' : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50') + '">' +
-                            '<span>📈</span> <span class="truncate">2. Finance Mgmt</span>' +
+                            '<span>📈</span> <span class="truncate">2. Finance for Decision Making</span>' +
                         '</button>' +
                         '<button onclick="setTri1Tab(\'pm\')" class="module-tab-btn py-2 px-2.5 rounded-xl border text-xs font-bold text-center flex items-center justify-center gap-1.5 ' + (activeTri1Tab === 'pm' ? 'active' : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50') + '">' +
-                            '<span>📊</span> <span class="truncate">3. Project Mgmt</span>' +
+                            '<span>📊</span> <span class="truncate">3. Project Management</span>' +
                         '</button>' +
                     '</div>' +
 
@@ -485,125 +485,131 @@
 
 '<div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm relative animate-fadeIn">' +
 
-'<div class="washi-tape tape-tr" style="width:70px;"></div>' +
+    '<div class="washi-tape tape-tr" style="width:70px;"></div>' +
 
-'<div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">' +
-    '<h3 class="font-extrabold text-navy-800 text-base flex items-center gap-2">' +
-        '<span class="bg-emerald-600 text-white rounded-lg p-1 text-xs">02</span>' +
-        '2. Finance for Decision Making' +
-    '</h3>' +
-    '<div class="bg-yellow-300 px-3 py-1 rounded-full rotate-[-4deg] font-black text-xs shadow">⭐ 67%</div>' +
-'</div>' +
-
-'<p class="text-xs text-slate-600 mb-4">' +
-'The assignment that introduced executive summaries, endless calculations, product creation, moments of doubt, and another milestone successfully completed.' +
-'</p>' +
-
-'<div class="grid md:grid-cols-2 gap-3 mb-4">' +
-
-    '<div class="polaroid rotate-[-2deg] interactive-img" onclick="openImageModal(\'finance_coverpage.jpg\', \'Finance Assignment Cover Page\')">' +
-        'finance_coverpage.jpg' +
-        '<div class="font-hand text-center mt-2 text-sm font-bold">Cover Page 📄</div>' +
+    '<div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">' +
+        '<h3 class="font-extrabold text-navy-800 text-base flex items-center gap-2">' +
+            '<span class="bg-emerald-600 text-white rounded-lg p-1 text-xs">02</span>' +
+            '2. Finance for Decision Making' +
+        '</h3>' +
+        '<div class="bg-yellow-300 px-3 py-1 rounded-full rotate-[-4deg] font-black text-xs shadow">⭐ Grade: 67%</div>' +
     '</div>' +
 
-    '<div class="polaroid rotate-[2deg] interactive-img" onclick="openImageModal(\'toc_finance.jpg\', \'Finance Assignment Table of Contents\')">' +
-        'toc_finance.jpg' +
-        '<div class="font-hand text-center mt-2 text-sm font-bold">Table of Contents 📋</div>' +
-    '</div>' +
+    '<p class="text-xs text-slate-600 mb-4">' +
+    'Your first executive summary, countless calculations, moments of frustration, "this looks good", and one more assignment successfully conquered.' +
+    '</p>' +
 
-'</div>' +
+    '<div class="grid md:grid-cols-2 gap-3 mb-4">' +
 
-'<div class="grid md:grid-cols-2 gap-3 mb-4">' +
-
-    '<div class="polaroid rotate-[-1deg] interactive-img" onclick="openImageModal(\'executivesummary.jpg\', \'First Executive Summary\')">' +
-        '<img src="executivesummary.jpg" class="w-full h-40 object-cover rounded">' +
-        '<div class="font-hand text-center mt-2 text-sm font-bold">First Executive Summary Ever ✨</div>' +
-    '</div>' +
-
-    '<div class="polaroid rotate-[1deg] interactive-img" onclick="openImageModal(\'newdrink.png\', \'Product Created For Assignment\')">' +
-        '<img src="newdrink.png" class="w-full h-40 object-contain rounded bg-white">' +
-        '<div class="font-hand text-center mt-2 text-sm font-bold">Angostura Product Concept 🍹</div>' +
-    '</div>' +
-
-'</div>' +
-
-'<div class="bg-slate-50 rounded-xl border border-slate-200 p-3 mb-4">' +
-
-    '<div class="font-bold text-slate-800 mb-2">The Calculations 📈</div>' +
-
-    '<div class="grid grid-cols-2 gap-3">' +
-
-        '<div class="polaroid interactive-img rotate-[-2deg]" onclick="openImageModal(\'calculations.jpg\', \'Financial Calculations\')">' +
-            'calculations.jpg' +
+        '<div class="polaroid rotate-[-2deg] interactive-img" onclick="openImageModal(\'finance_coverpage.jpg\', \'you were getting better at this cover page thing\')">' +
+            'finance_coverpage.jpg' +
+            '<div class="font-hand text-center mt-2 text-sm font-bold">Cover Page 📄</div>' +
         '</div>' +
 
-        '<div class="polaroid interactive-img rotate-[2deg]" onclick="openImageModal(\'calculations2.jpg\', \'Financial Calculations\')">' +
-            'calculations2.jpg' +
+        '<div class="polaroid rotate-[2deg] interactive-img" onclick="openImageModal(\'toc_finance.jpg\', \'this looks short, IT WASNT!\')">' +
+            'toc_finance.jpg' +
+            '<div class="font-hand text-center mt-2 text-sm font-bold">Table of Contents 📋</div>' +
         '</div>' +
 
     '</div>' +
 
-'</div>' +
+    '<div class="grid md:grid-cols-2 gap-3 mb-4">' +
 
-'<div class="grid md:grid-cols-2 gap-3 mb-4">' +
-
-    '<div class="polaroid rotate-[2deg] interactive-img" onclick="openImageModal(\'righttrack.jpg\', \'Funny Lecturer Feedback\')">' +
-        '<img src="righttrack.jpg" class="w-full h-40 object-cover rounded">' +
-        '<div class="font-hand text-center mt-2 text-sm font-bold">"Right Track" 😂</div>' +
-    '</div>' +
-
-    '<div class="polaroid rotate-[-2deg] interactive-img" onclick="openImageModal(\'good_girl_calculations.gif\', \'Inside Joke\')">' +
-        'good_girl_calculations.gif' +
-        '<div class="font-hand text-center mt-2 text-sm font-bold">Inside Joke Archive 😂</div>' +
-    '</div>' +
-
-'</div>' +
-
-'<div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">' +
-
-    '<div class="grid md:grid-cols-2 gap-4 items-center">' +
-
-        '<div class="polaroid rotate-[-1deg] interactive-img" onclick="openImageModal(\'demotivated.png\', \'Moment Of Doubt\')">' +
-            '<img src="demotivated.png" class="w-full rounded">' +
+        '<div class="polaroid rotate-[-1deg] interactive-img" onclick="openImageModal(\'executivesummary.jpg\')">' +
+            '<img src="executivesummary.jpg" class="w-full h-40 object-contain rounded bg-white">' +
+            '<div class="font-hand text-center mt-2 text-sm font-bold">First Executive Summary Ever ✨</div>' +
         '</div>' +
 
-        '<div>' +
-            '<div class="font-extrabold text-blue-900 mb-2">A Moment Worth Remembering 💙</div>' +
-            '<p class="text-sm text-slate-700 mb-3">' +
-            'During this assignment he felt demotivated. That is exactly why this screenshot belongs here.' +
-            '</p>' +
+        '<div class="polaroid rotate-[1deg] interactive-img" onclick="openImageModal(\'newdrink.png\', \'they should've hired you on the spot\')">' +
+            '<img src="newdrink.png" class="w-full h-40 object-contain rounded bg-white">' +
+            '<div class="font-hand text-center mt-2 text-sm font-bold">Angostura Product Concept 🍹</div>' +
+        '</div>' +
 
-            '<p class="text-sm text-slate-700 mb-3">' +
-            'Not because things were easy, but because he pushed through anyway.' +
-            '</p>' +
+    '</div>' +
 
-            '<div class="sticky-note bg-postit-yellow p-3 rounded rotate-[1deg] text-lg font-bold">' +
-            'Funny thing about this message... he still earned 67% and completed the MBA. 🎓' +
+    '<div class="bg-slate-50 rounded-xl border border-slate-200 p-3 mb-4">' +
+
+        '<div class="font-bold text-slate-800 mb-3">The Calculations 📈</div>' +
+
+        '<div class="grid grid-cols-2 gap-3">' +
+
+            '<div class="polaroid interactive-img rotate-[-2deg]" onclick="openImageModal(\'calculations.jpg\', \'uhhhh !?!?\')">' +
+                'calculations.jpg' +
             '</div>' +
+
+            '<div class="polaroid interactive-img rotate-[2deg]" onclick="openImageModal(\'calculations2.jpg\', \'it just got harder from here, but you maths them\')">' +
+                'calculations2.jpg' +
+            '</div>' +
+
         '</div>' +
 
     '</div>' +
 
-'</div>' +
+    '<div class="grid md:grid-cols-2 gap-3 mb-4">' +
 
-'<div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center">' +
+        '<div class="polaroid rotate-[2deg] interactive-img" onclick="openImageModal(\'righttrack.jpg\')">' +
+            '<img src="righttrack.jpg" class="w-full h-36 object-contain rounded bg-white">' +
+            '<div class="font-hand text-center mt-2 text-sm font-bold">"Right Track" 😂</div>' +
+        '</div>' +
 
-    '<div class="text-xs uppercase tracking-widest text-emerald-700 font-bold mb-2">Assignment Submitted ✅</div>' +
+        '<div class="polaroid rotate-[-2deg] interactive-img" onclick="openImageModal(\'good_girl_calculations.gif\', \'Good Girl Worth Wha?\')">' +
+            'good_girl_calculations.gif' +
+            '<div class="font-hand text-center mt-2 text-sm font-bold">Inside Joke Archive 😂</div>' +
+        '</div>' +
 
-    '<div class="polaroid max-w-xs mx-auto interactive-img" onclick="openImageModal(\'finance_submission.gif\', \'Finance Assignment Submitted\')">' +
-        'finance_submission.gif' +
     '</div>' +
 
-    '<div class="font-bold text-emerald-900 mt-3">4th December 2025</div>' +
+    '<div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">' +
 
-    '<div class="font-hand text-xl mt-1">Another milestone completed 🎉</div>' +
+        '<div class="grid md:grid-cols-2 gap-4 items-center">' +
 
-'</div>' +
+            '<div class="polaroid rotate-[-1deg] interactive-img" onclick="openImageModal(\'demotivated.png\', \'Moment Of Doubt\')">' +
+                '<img src="demotivated.png" class="w-full object-contain rounded">' +
+            '</div>' +
+
+            '<div>' +
+
+                '<div class="font-extrabold text-blue-900 mb-2">A Moment Worth Remembering 💙</div>' +
+
+                '<p class="text-sm text-slate-700 mb-3">' +
+                'During this assignment, I think the weight of this journey was starting to set in...' +
+                '</p>' +
+
+                '<p class="text-sm text-slate-700 mb-3">' +
+                'That is exactly why this message belongs here...' +
+                '</p>' +
+
+                '<p class="text-sm text-slate-700 mb-3">' +
+                'Not because things were easy, but because you kept going anyway.' +
+                '</p>' +
+
+                '<div class="sticky-note bg-postit-yellow p-3 rounded rotate-[1deg] text-base font-bold">' +
+                'Funny thing about this message... you still earned 67% and completed the ENTIRE MBA. 🎓' +
+                '</div>' +
+
+            '</div>' +
+
+        '</div>' +
+
+    '</div>' +
+
+    '<div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center">' +
+
+        '<div class="text-xs uppercase tracking-widest text-emerald-700 font-bold mb-2">Assignment Submitted ✅</div>' +
+
+        '<div class="polaroid max-w-xs mx-auto interactive-img" onclick="openImageModal(\'finance_submission.gif\', \'Finance Assignment Submitted\')">' +
+            'finance_submission.gif' +
+        '</div>' +
+
+        '<div class="font-bold text-emerald-900 mt-3">4th December 2025</div>' +
+
+        '<div class="font-hand text-xl mt-1">Another milestone completed 🎉</div>' +
+
+    '</div>' +
 
 '</div>'
 
 : '') +
-
                     (activeTri1Tab === 'pm' ? 
                         '<div class="bg-amber-50/60 p-3 md:p-4 rounded-2xl border border-amber-200/80 shadow-inner relative animate-fadeIn">' +
                             '<div class="flex items-center justify-between mb-2 border-b border-amber-200/80 pb-2">' +
@@ -637,7 +643,7 @@
                                         '</div>' +
 
                                         /* 2. ProjectLibre - Red Thumbtack on Lined Notebook Sheet */
-                                        '<div class="interactive-img cursor-pointer relative rotate-[2deg] hover:rotate-0 transition-transform duration-300 bg-amber-50 p-2 rounded-sm shadow-md border-l-4 border-l-red-400 border border-amber-200 flex flex-col justify-between" onclick="openImageModal(\'ganttproj_librescreenshot.png\', \'ProjectLibre Software • Timeline & Allocation Setup\')">' +
+                                        '<div class="interactive-img cursor-pointer relative rotate-[2deg] hover:rotate-0 transition-transform duration-300 bg-amber-50 p-2 rounded-sm shadow-md border-l-4 border-l-red-400 border border-amber-200 flex flex-col justify-between" onclick="openImageModal(\'ganttproj_librescreenshot.png\', \'the amount of lines on this thing, i gantt\')">' +
                                             /* Red Thumbtack Icon */
                                             '<div class="absolute -top-2.5 left-1/2 -translate-x-1/2 text-base z-20 drop-shadow-sm">📌</div>' +
                                             '<div class="w-full h-24 bg-white overflow-hidden rounded border border-amber-200/80 flex items-center justify-center mt-1">' +
@@ -650,7 +656,7 @@
                                         '</div>' +
 
                                         /* 3. Table of Contents - Silver Paperclip Attached Note */
-                                        '<div class="interactive-img cursor-pointer relative rotate-[-3deg] hover:rotate-0 transition-transform duration-300 bg-stone-50 p-2 rounded shadow-md border border-stone-200 flex flex-col justify-between" onclick="openImageModal(\'gantt_toc.jpg\', \'Table of Contents • Detailed Project Framework\')">' +
+                                        '<div class="interactive-img cursor-pointer relative rotate-[-3deg] hover:rotate-0 transition-transform duration-300 bg-stone-50 p-2 rounded shadow-md border border-stone-200 flex flex-col justify-between" onclick="openImageModal(\'gantt_toc.jpg\')">' +
                                             /* Paperclip Graphic */
                                             '<div class="absolute -top-3 right-3 text-lg z-20 opacity-80 rotate-12 drop-shadow-sm">📎</div>' +
                                             '<div class="w-full h-24 bg-white overflow-hidden rounded border border-stone-200 flex items-center justify-center">' +
@@ -663,19 +669,19 @@
                                         '</div>' +
 
                                         /* 4. Teamwork Email - Sticky Yellow Paper Note */
-                                        '<div class="interactive-img cursor-pointer relative rotate-[3deg] hover:rotate-0 transition-transform duration-300 bg-postit-yellow p-2 rounded shadow-md border border-amber-300 flex flex-col justify-between" onclick="openImageModal(\'ganttproj_email.png\', \'Teamwork Made The Dream Work • Working Through The Details\')">' +
+                                        '<div class="interactive-img cursor-pointer relative rotate-[3deg] hover:rotate-0 transition-transform duration-300 bg-postit-yellow p-2 rounded shadow-md border border-amber-300 flex flex-col justify-between" onclick="openImageModal(\'ganttproj_email.png\', \'Workin through the details\')">' +
                                             '<div class="washi-tape tape-tr" style="width:40px; top:-6px; right:6px;"></div>' +
                                             '<div class="w-full h-24 bg-white overflow-hidden rounded border border-amber-200 flex items-center justify-center">' +
                                                 '<img src="ganttproj_email.png" alt="Collaboration Email" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;p-2 text-center text-[10px] font-bold text-amber-900&quot;>✉️ Teamwork Email</div>\';">' +
                                             '</div>' +
                                             '<div class="mt-1.5 text-center">' +
-                                                '<div class="font-hand text-sm font-extrabold text-amber-950 leading-tight">Teamwork Dreamwork 💛</div>' +
+                                                '<div class="font-hand text-sm font-extrabold text-amber-950 leading-tight">Teamwork = Dreamwork 💛</div>' +
                                                 '<div class="text-[9px] text-amber-900/70 font-sans font-medium">Shared victory</div>' +
                                             '</div>' +
                                         '</div>' +
 
                                         /* 5. First Submission - Torn Page Fragment Frame */
-                                        '<div class="interactive-img cursor-pointer relative rotate-[-1deg] hover:rotate-0 transition-transform duration-300 bg-slate-900 text-white p-2 rounded-t-lg rounded-b-[18px] shadow-lg border border-slate-700 flex flex-col justify-between col-span-2 sm:col-span-1" onclick="openImageModal(\'first_submission.gif\', \'Submitted on Turnitin Portal! Victory Moment\')">' +
+                                        '<div class="interactive-img cursor-pointer relative rotate-[-1deg] hover:rotate-0 transition-transform duration-300 bg-slate-900 text-white p-2 rounded-t-lg rounded-b-[18px] shadow-lg border border-slate-700 flex flex-col justify-between col-span-2 sm:col-span-1" onclick="openImageModal(\'first_submission.gif\', \'finallyyyy\')">' +
                                             '<div class="w-full h-24 bg-black overflow-hidden rounded border border-slate-700 flex items-center justify-center">' +
                                                 '<img src="first_submission.gif" alt="Turnitin Submitted" class="w-full h-full object-cover" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;p-2 text-center text-[10px] font-bold text-amber-300&quot;>🎉 Submitted!</div>\';">' +
                                             '</div>' +
@@ -691,12 +697,12 @@
                                         '<div class="washi-tape tape-tl" style="width:60px; top:-8px; left:16px;"></div>' +
                                         '<div class="washi-tape tape-tr" style="width:60px; top:-8px; right:16px;"></div>' +
                                         '<div class="w-full md:w-3/4 h-28 md:h-32 bg-slate-50 rounded-lg overflow-hidden border border-slate-200 flex items-center justify-center p-1">' +
-                                            '<img src="ganttproj_orgchart.png" alt="Project Org Chart" class="w-full h-full object-contain rotate-0" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;p-4 text-center text-xs font-bold text-slate-500&quot;>🌐 Org Chart & Work Breakdown Structure</div>\';">' +
+                                            '<img src="ganttproj_orgchart.png" alt="Project Org Chart" class="w-full h-full object-contain rotate-0" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;p-4 text-center text-xs font-bold text-slate-500&quot;>🌐 Org Chart</div>\';">' +
                                         '</div>' +
                                         '<div class="w-full md:w-1/4 text-center md:text-left px-2">' +
                                             '<div class="inline-block md:block bg-amber-100 text-amber-900 font-bold text-[10px] px-2 py-0.5 rounded-full mb-1">FULL STRUCTURE</div>' +
-                                            '<div class="font-hand text-base md:text-lg font-extrabold text-slate-800 leading-tight">Org Chart & WBS 🌐</div>' +
-                                            '<div class="text-[11px] text-slate-500 font-sans mt-0.5">Team structure & role allocations rendered horizontally across project lifecycle.</div>' +
+                                            '<div class="font-hand text-base md:text-lg font-extrabold text-slate-800 leading-tight">IQI WHO DIS?</div>' +
+                                            '<div class="text-[11px] text-slate-500 font-sans mt-0.5">we hadda do this again yk.</div>' +
                                         '</div>' +
                                     '</div>' +
 
@@ -713,7 +719,7 @@
                                         '<div class="font-extrabold text-navy-800 text-base mb-1">Submission Day Celebration 🏆</div>' +
                                         '<p class="mb-3 leading-relaxed text-slate-600">The moment when all the hard work paid off! Circling the submission deadline date and capturing the victory moment on Turnitin.</p>' +
                                         '<div class="bg-postit-yellow p-3 rounded-lg border border-amber-300 text-xs font-hand font-bold text-slate-800 shadow-sm rotate-[1deg]">' +
-                                            '📌 "First MBA assignment officially submitted! Milestone unlocked!"' +
+                                            '📌 "First MBA assignment officially submitted! Milestone unlocked."' +
                                         '</div>' +
                                     '</div>' +
                                 '</div>'
@@ -723,7 +729,7 @@
                 '</div>' +
 
                 '<div class="sticky-note bg-postit-pink p-3 rounded max-w-md mx-auto rotate-[-1deg] text-slate-800 text-sm md:text-base font-bold mt-2">' +
-                    '💚 "Teamwork made the dream work! Seeing all these gantt charts, emails, and screenshots brings back the hard work behind every single detail."' +
+                    '💚 "Teamwork made the dream work. We thought we GANTT do it, but here we are."' +
                 '</div>' +
             '</div>',
 
