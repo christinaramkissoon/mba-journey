@@ -50,7 +50,6 @@
             overflow-x: hidden;
         }
 
-        /* 3D Book Container Styling */
         .book-wrapper {
             perspective: 2000px;
         }
@@ -61,7 +60,6 @@
             transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* Cover-Specific Dynamic 3D Card Effects */
         .cover-3d-card {
             transform-style: preserve-3d;
             transition: transform 0.2s cubic-bezier(0.1, 0.8, 0.2, 1), box-shadow 0.3s ease;
@@ -76,7 +74,6 @@
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(30, 58, 138, 0.3) 100%);
         }
 
-        /* Vibrancy & Rich Contrast Filter for Artwork */
         .cover-enhanced-img {
             filter: contrast(115%) saturate(130%) brightness(102%);
             transition: filter 0.4s ease, transform 0.5s ease;
@@ -123,7 +120,6 @@
             animation: shimmerGlow 5s linear infinite;
         }
 
-        /* Scrapbook Washi Tape Effect */
         .washi-tape {
             position: absolute;
             height: 26px;
@@ -141,20 +137,18 @@
         .tape-bl { bottom: -10px; left: 15px; transform: rotate(4deg); }
         .tape-br { bottom: -10px; right: 15px; transform: rotate(-5deg); }
 
-        /* Polaroid Frame Effect */
         .polaroid {
             background: #ffffff;
-            padding: 10px 10px 28px 10px;
+            padding: 8px 8px 20px 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.12);
             transition: transform 0.3s ease;
         }
 
         .polaroid:hover {
-            transform: scale(1.02) rotate(0deg) !important;
+            transform: scale(1.03) rotate(0deg) !important;
             z-index: 30;
         }
 
-        /* Sticky Post-it Notes */
         .sticky-note {
             box-shadow: 3px 4px 12px rgba(0,0,0,0.12);
             font-family: 'Caveat', cursive;
@@ -162,7 +156,6 @@
             position: relative;
         }
 
-        /* Interactive Image Animation Effects */
         .interactive-img {
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
             cursor: pointer;
@@ -173,7 +166,6 @@
             z-index: 25;
         }
 
-        /* Image Lightbox Modal */
         .img-modal {
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
@@ -182,7 +174,6 @@
             visibility: visible;
         }
 
-        /* Coffee Stain Accent */
         .coffee-stain {
             position: absolute;
             width: 90px;
@@ -193,7 +184,6 @@
             pointer-events: none;
         }
 
-        /* Secrets Graduation Envelope */
         .envelope-container {
             perspective: 1000px;
             cursor: pointer;
@@ -211,31 +201,14 @@
             opacity: 1;
         }
 
-        @keyframes subtleGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.25), 0 20px 40px rgba(0, 0, 0, 0.4); }
-            50% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.45), 0 25px 50px rgba(0, 0, 0, 0.5); }
+        .module-tab-btn {
+            transition: all 0.25s ease;
         }
-
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px) rotate(-3deg); }
-            50% { transform: translateY(-8px) rotate(-1deg); }
-        }
-
-        @keyframes floatReverse {
-            0%, 100% { transform: translateY(0px) rotate(4deg); }
-            50% { transform: translateY(-6px) rotate(6deg); }
-        }
-
-        .cover-card-glow {
-            animation: subtleGlow 4s infinite ease-in-out;
-        }
-
-        .float-badge-1 {
-            animation: floatSlow 5s infinite ease-in-out;
-        }
-
-        .float-badge-2 {
-            animation: floatReverse 4.5s infinite ease-in-out;
+        .module-tab-btn.active {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            border-color: #1e3a8a;
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
         }
     </style>
 </head>
@@ -304,11 +277,11 @@
     </div>
 
     <script>
-        // Target Graduation Date: November 17, 2026
         const GRADUATION_DATE = new Date("November 17, 2026 00:00:00").getTime();
         let currentPage = 0;
+        let activeTri1Tab = 'mkt'; // Default active module tab for Page 3 ('mkt', 'fin', 'pm')
+        let pmSubView = 'grid'; // Sub-view mode for PM module ('grid', 'timeline', 'spotlight')
 
-        // Sound Effects setup using Tone.js
         let synth;
         function initSound() {
             if (!synth && window.Tone) {
@@ -327,12 +300,9 @@
                     Tone.start();
                 }
                 if (synth) synth.triggerAttackRelease("16n");
-            } catch (e) {
-                // Silently fallback if audio permissions are blocked
-            }
+            } catch (e) {}
         }
 
-        // Countdown Clock Logic
         function updateCountdown() {
             const now = new Date().getTime();
             const diff = GRADUATION_DATE - now;
@@ -352,29 +322,55 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 8 Interactive Book Pages Data
-        const pages = [
-            // PAGE 0: DYNAMIC 3D COVER PAGE (ENHANCED VIBRANCE & CONTRAST)
+        function setTri1Tab(tabId) {
+            activeTri1Tab = tabId;
+            playPageSound();
+            renderPage();
+        }
+
+        function setPmView(viewMode) {
+            pmSubView = viewMode;
+            playPageSound();
+            renderPage();
+        }
+
+        function openImageModal(imgSrc, captionText) {
+            const modal = document.getElementById("image-modal");
+            const modalImg = document.getElementById("modal-img");
+            const modalCaption = document.getElementById("modal-caption");
+            
+            if (modal && modalImg) {
+                modalImg.src = imgSrc;
+                if (modalCaption) modalCaption.innerText = captionText || "";
+                modal.classList.add("open");
+                playPageSound();
+            }
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById("image-modal");
+            if (modal) {
+                modal.classList.remove("open");
+            }
+        }
+
+        function getPages() {
+            return [
+            // PAGE 0: COVER
             '' +
             '<div class="h-full flex flex-col justify-center items-center text-center py-2 px-1 relative overflow-hidden" onmousemove="handleCoverTilt(event)" onmouseleave="resetCoverTilt()">' +
-                '<!-- Background Ambient Particle Glow -->' +
                 '<div class="absolute inset-0 bg-gradient-to-tr from-amber-500/20 via-indigo-600/20 to-blue-500/20 blur-3xl pointer-events-none"></div>' +
-                
                 '<div id="cover-card" class="cover-3d-card relative max-w-xl w-full p-6 md:p-8 rounded-3xl my-auto text-white">' +
                     '<div class="washi-tape tape-tl"></div>' +
                     '<div class="washi-tape tape-tr"></div>' +
                     '<div class="washi-tape tape-bl"></div>' +
                     '<div class="washi-tape tape-br"></div>' +
-
-                    '<!-- Floating Decorative Ribbon Badges -->' +
                     '<div class="cover-badge-float-1 absolute -top-4 -left-3 bg-gradient-to-r from-amber-400 to-amber-600 text-slate-950 font-black text-[10px] md:text-xs px-4 py-1.5 rounded-full shadow-2xl border border-amber-200 uppercase tracking-widest flex items-center gap-1.5 z-30">' +
                         '✨ SAMS MBA MEMORIES' +
                     '</div>' +
-
                     '<div class="cover-badge-float-2 absolute -bottom-3 -right-2 bg-slate-900/95 text-amber-300 font-extrabold text-[10px] md:text-xs px-4 py-1.5 rounded-full shadow-2xl border border-amber-400/50 z-30 flex items-center gap-1.5 backdrop-blur-md">' +
                         '🎓 CLASS OF 2025–2026' +
                     '</div>' +
-
                     '<div class="mb-3 relative inline-block">' +
                         '<h1 class="text-3xl md:text-5xl font-black tracking-tight mb-1 shimmer-text drop-shadow-md">Jeremi\'s MBA Journey</h1>' +
                         '<div class="h-1 bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 rounded-full mx-auto mt-1.5 animated-underline"></div>' +
@@ -383,14 +379,11 @@
                             'Finance • Big Data • FinTech | SAMS' +
                         '</div>' +
                     '</div>' +
-
-                    '<!-- Enhanced Framed Artwork Container with Custom Vibrancy Filters -->' +
                     '<div class="cover-art-container my-4 max-w-[380px] md:max-w-[420px] mx-auto p-2.5 rounded-2xl border border-amber-400/30 interactive-img cursor-pointer" onclick="openImageModal(\'cap_road.jpg\', \'Jeremi\'s MBA Journey • The Climb to Graduation\')">' +
                         '<div class="w-full bg-slate-950 rounded-xl overflow-hidden flex items-center justify-center min-h-[260px] md:min-h-[300px] shadow-2xl relative border border-slate-800">' +
                             '<img src="cap_road.jpg" alt="Jeremi MBA Mountain Cover" class="cover-enhanced-img w-full h-auto max-h-[320px] md:max-h-[360px] object-contain transition-transform duration-500 hover:scale-105" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;p-8 text-center text-slate-400 font-bold text-xs&quot;><span class=&quot;text-4xl block mb-2&quot;>🎓⛰️</span>Upload cap_road.jpg to GitHub</div>\';">' +
                         '</div>' +
                     '</div>' +
-
                     '<div class="flex items-center justify-between max-w-[380px] mx-auto mt-4 pt-3 border-t border-slate-700/80 text-xs">' +
                         '<span class="font-hand text-xl md:text-2xl font-bold text-amber-300 drop-shadow">The Climb to Success 🚀</span>' +
                         '<button onclick="nextPage()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 px-5 py-2 rounded-full font-extrabold shadow-lg hover:shadow-amber-500/20 transition transform hover:-translate-y-0.5 flex items-center gap-1.5 text-xs ring-2 ring-amber-300/50">' +
@@ -421,7 +414,8 @@
             '</div>',
 
             // PAGE 2: CHAPTER 1 - THE DECISION
-           '<div class="h-full flex flex-col justify-between">' +
+            '' +
+            '<div class="h-full flex flex-col justify-between">' +
                 '<div>' +
                     '<div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-4">' +
                         '<span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Page 2 • Chapter 1</span>' +
@@ -433,7 +427,6 @@
                             '<div class="text-xs font-bold text-blue-900 uppercase tracking-wider mb-1">First Class Kick-off</div>' +
                             '<div class="text-lg font-bold text-slate-800">Thursday, 25th September 2025</div>' +
                             '<p class="text-sm text-slate-600 mt-2 mb-3">The official start of the MBA in Finance, Big Data & FinTech at SAMS.</p>' +
-                            '<!-- Animated Calendar GIF replaces the old text badge -->' +
                             '<div class="mt-2 rounded-xl overflow-hidden border-2 border-amber-400/40 shadow-md interactive-img cursor-pointer max-w-[280px]" onclick="openImageModal(\'firstday_calendar.gif\', \'September 25th, 2025 • Day 1 Circled on Calendar\')">' +
                                 '<img src="firstday_calendar.gif" alt="First Day Calendar Animation" class="w-full h-auto object-cover rounded-lg" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;p-4 bg-slate-100 text-center text-xs text-slate-500 font-bold rounded-lg border border-dashed border-slate-300&quot;>📅 upload firstday_calendar.gif</div>\';">' +
                             '</div>' +
@@ -448,41 +441,169 @@
                     '📌 "Every journey begins with a bold decision. You took the leap!"' +
                 '</div>' +
             '</div>',
-            
+
             // PAGE 3: CHAPTER 2 - TRIMESTER 1
+            '' +
             '<div class="h-full flex flex-col justify-between">' +
                 '<div>' +
-                    '<div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-4">' +
+                    '<div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">' +
                         '<span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Page 3 • Chapter 2</span>' +
-                        '<span class="text-xs text-slate-400 font-mono">Trimester 1</span>' +
+                        '<span class="text-xs text-slate-400 font-mono">Trimester 1 Modules</span>' +
                     '</div>' +
-                    '<h2 class="text-2xl font-extrabold text-navy-800 mb-3">The First Steps</h2>' +
-                    '<div class="grid grid-cols-1 md:grid-cols-3 gap-3">' +
-                        '<div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm relative">' +
-                            '<div class="washi-tape tape-tl" style="width:60px;"></div>' +
-                            '<h3 class="font-bold text-slate-800 text-sm">Marketing Management</h3>' +
-                            '<p class="text-xs text-slate-500 mt-1">Principles of Marketing</p>' +
-                            '<div class="mt-3 p-2 bg-slate-50 rounded border border-dashed border-slate-300 text-center text-xs text-slate-400">📷 Assignment Snippet</div>' +
-                        '</div>' +
-                        '<div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm relative">' +
-                            '<h3 class="font-bold text-slate-800 text-sm">Finance for Decision Making</h3>' +
-                            '<p class="text-xs text-slate-500 mt-1">Financial Models & Valuation</p>' +
-                            '<div class="mt-3 p-2 bg-slate-50 rounded border border-dashed border-slate-300 text-center text-xs text-slate-400">📈 Excel Charts / Graphs</div>' +
-                        '</div>' +
-                        '<div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm relative">' +
-                            '<div class="washi-tape tape-tr" style="width:60px;"></div>' +
-                            '<h3 class="font-bold text-slate-800 text-sm">Project Management</h3>' +
-                            '<p class="text-xs text-slate-500 mt-1">Gantt Charts & Delivery</p>' +
-                            '<div class="mt-3 p-2 bg-slate-50 rounded border border-dashed border-slate-300 text-center text-xs text-slate-400">📊 Gantt Chart</div>' +
-                        '</div>' +
+                    '<h2 class="text-2xl font-extrabold text-navy-800 mb-2">Trimester 1 Breakdown</h2>' +
+                    '<p class="text-xs text-slate-600 mb-3">Click on any module below to expand and view its details & media highlights:</p>' +
+
+                    '<div class="grid grid-cols-3 gap-2 mb-4">' +
+                        '<button onclick="setTri1Tab(\'mkt\')" class="module-tab-btn py-2 px-2.5 rounded-xl border text-xs font-bold text-center flex items-center justify-center gap-1.5 ' + (activeTri1Tab === 'mkt' ? 'active' : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50') + '">' +
+                            '<span>📣</span> <span class="truncate">1. Marketing Mgmt</span>' +
+                        '</button>' +
+                        '<button onclick="setTri1Tab(\'fin\')" class="module-tab-btn py-2 px-2.5 rounded-xl border text-xs font-bold text-center flex items-center justify-center gap-1.5 ' + (activeTri1Tab === 'fin' ? 'active' : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50') + '">' +
+                            '<span>📈</span> <span class="truncate">2. Finance Mgmt</span>' +
+                        '</button>' +
+                        '<button onclick="setTri1Tab(\'pm\')" class="module-tab-btn py-2 px-2.5 rounded-xl border text-xs font-bold text-center flex items-center justify-center gap-1.5 ' + (activeTri1Tab === 'pm' ? 'active' : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50') + '">' +
+                            '<span>📊</span> <span class="truncate">3. Project Mgmt</span>' +
+                        '</button>' +
                     '</div>' +
+
+                    (activeTri1Tab === 'mkt' ? 
+                        '<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative animate-fadeIn">' +
+                            '<div class="washi-tape tape-tl" style="width:70px;"></div>' +
+                            '<div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">' +
+                                '<h3 class="font-extrabold text-navy-800 text-base flex items-center gap-2">' +
+                                    '<span class="bg-blue-600 text-white rounded-lg p-1 text-xs">01</span>' +
+                                    '1. Principles of Marketing Management' +
+                                '</h3>' +
+                            '</div>' +
+                            '<p class="text-xs text-slate-600 leading-relaxed mb-4">Mastering core frameworks, target consumer segmentation, positioning strategy, and campaign evaluation.</p>' +
+                            '<div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 text-center text-xs text-slate-500 font-medium">' +
+                                '📷 Click or add Marketing notes, market analysis reports, or assignment submissions here.' +
+                            '</div>' +
+                        '</div>'
+                    : '') +
+
+                    (activeTri1Tab === 'fin' ? 
+                        '<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative animate-fadeIn">' +
+                            '<div class="washi-tape tape-tr" style="width:70px;"></div>' +
+                            '<div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">' +
+                                '<h3 class="font-extrabold text-navy-800 text-base flex items-center gap-2">' +
+                                    '<span class="bg-emerald-600 text-white rounded-lg p-1 text-xs">02</span>' +
+                                    '2. Finance for Decision Making' +
+                                '</h3>' +
+                            '</div>' +
+                            '<p class="text-xs text-slate-600 leading-relaxed mb-4">Navigating cash flow valuation, financial modeling in Excel, break-even analysis, and corporate decision matrices.</p>' +
+                            '<div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 text-center text-xs text-slate-500 font-medium">' +
+                                '📈 Click or add Financial models, Excel formulas, valuation charts, or coursework screenshots here.' +
+                            '</div>' +
+                        '</div>'
+                    : '') +
+
+                    (activeTri1Tab === 'pm' ? 
+                        '<div class="bg-amber-50/60 p-3 md:p-4 rounded-2xl border border-amber-200 shadow-inner relative animate-fadeIn">' +
+                            '<div class="flex items-center justify-between mb-2 border-b border-amber-200/80 pb-2">' +
+                                '<h3 class="font-extrabold text-navy-800 text-sm md:text-base flex items-center gap-2">' +
+                                    '<span class="bg-amber-500 text-white rounded-lg p-1 text-xs">03</span>' +
+                                    '3. Project Management Highlights' +
+                                '</h3>' +
+                                '<span class="text-[10px] bg-amber-200/80 text-amber-900 font-bold px-2 py-0.5 rounded-full uppercase">First MBA Milestone</span>' +
+                            '</div>' +
+                            
+                            '<div class="flex items-center justify-between gap-1 mb-3 bg-amber-100/70 p-1 rounded-xl border border-amber-200 text-[11px] font-bold text-amber-900 overflow-x-auto">' +
+                                '<button onclick="setPmView(\'grid\')" class="px-2.5 py-1 rounded-lg transition ' + (pmSubView === 'grid' ? 'bg-white shadow text-navy-800' : 'hover:bg-amber-200/50') + '">📷 Scrapbook Gallery</button>' +
+                                '<button onclick="setPmView(\'timeline\')" class="px-2.5 py-1 rounded-lg transition ' + (pmSubView === 'timeline' ? 'bg-white shadow text-navy-800' : 'hover:bg-amber-200/50') + '">⏱️ Story Timeline</button>' +
+                                '<button onclick="setPmView(\'spotlight\')" class="px-2.5 py-1 rounded-lg transition ' + (pmSubView === 'spotlight' ? 'bg-white shadow text-navy-800' : 'hover:bg-amber-200/50') + '">🔍 Highlight Spotlight</button>' +
+                            '</div>' +
+
+                            (pmSubView === 'grid' ? 
+                                '<div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">' +
+                                    '<div class="polaroid interactive-img cursor-pointer" onclick="openImageModal(\'ganttproj_coversheet.png\', \'The Beginning • First Ever MBA Project Coversheet\')">' +
+                                        '<img src="ganttproj_coversheet.png" alt="Project Coversheet" class="w-full h-20 md:h-22 object-cover rounded" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;w-full h-20 bg-amber-100 flex flex-col items-center justify-center text-[10px] font-bold text-amber-800 rounded p-1&quot;>📄 Coversheet<span class=&quot;text-[9px] font-normal text-amber-600&quot;>ganttproj_coversheet.png</span></div>\';">' +
+                                        '<div class="font-hand text-[11px] font-bold text-slate-800 mt-1 text-center truncate">1. First MBA Coversheet 📄</div>' +
+                                        '<div class="text-[9px] text-slate-500 text-center font-sans">Official project launch</div>' +
+                                    '</div>' +
+
+                                    '<div class="polaroid interactive-img cursor-pointer" onclick="openImageModal(\'ganttproj_librescreenshot.png\', \'ProjectLibre Software • Timeline & Allocation Setup\')">' +
+                                        '<img src="ganttproj_librescreenshot.png" alt="Project Libre Screenshot" class="w-full h-20 md:h-22 object-cover rounded" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;w-full h-20 bg-amber-100 flex flex-col items-center justify-center text-[10px] font-bold text-amber-800 rounded p-1&quot;>📊 ProjectLibre<span class=&quot;text-[9px] font-normal text-amber-600&quot;>ganttproj_librescreenshot.png</span></div>\';">' +
+                                        '<div class="font-hand text-[11px] font-bold text-slate-800 mt-1 text-center truncate">2. ProjectLibre Gantt Chart 📊</div>' +
+                                        '<div class="text-[9px] text-slate-500 text-center font-sans">Schedules & resources</div>' +
+                                    '</div>' +
+
+                                    '<div class="polaroid interactive-img cursor-pointer" onclick="openImageModal(\'gantt_toc.jpg\', \'Table of Contents • Detailed Project Framework\')">' +
+                                        '<img src="gantt_toc.jpg" alt="Table of Contents" class="w-full h-20 md:h-22 object-cover rounded" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;w-full h-20 bg-amber-100 flex flex-col items-center justify-center text-[10px] font-bold text-amber-800 rounded p-1&quot;>📋 Table of Contents<span class=&quot;text-[9px] font-normal text-amber-600&quot;>gantt_toc.jpg</span></div>\';">' +
+                                        '<div class="font-hand text-[11px] font-bold text-slate-800 mt-1 text-center truncate">3. Table of Contents 📋</div>' +
+                                        '<div class="text-[9px] text-slate-500 text-center font-sans">Structured breakdown</div>' +
+                                    '</div>' +
+
+                                    '<div class="polaroid interactive-img cursor-pointer" onclick="openImageModal(\'ganttproj_orgchart.png\', \'Work Breakdown & Organizational Structure\')">' +
+                                        '<img src="ganttproj_orgchart.png" alt="Project Org Chart" class="w-full h-20 md:h-22 object-cover rounded" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;w-full h-20 bg-amber-100 flex flex-col items-center justify-center text-[10px] font-bold text-amber-800 rounded p-1&quot;>🌐 Org Structure<span class=&quot;text-[9px] font-normal text-amber-600&quot;>ganttproj_orgchart.png</span></div>\';">' +
+                                        '<div class="font-hand text-[11px] font-bold text-slate-800 mt-1 text-center truncate">4. Org Chart & WBS 🌐</div>' +
+                                        '<div class="text-[9px] text-slate-500 text-center font-sans">Team responsibilities</div>' +
+                                    '</div>' +
+
+                                    '<div class="polaroid interactive-img cursor-pointer" onclick="openImageModal(\'ganttproj_email.png\', \'Teamwork Made The Dream Work • Working Through The Details\')">' +
+                                        '<img src="ganttproj_email.png" alt="Project Collaboration Email" class="w-full h-20 md:h-22 object-cover rounded" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;w-full h-20 bg-amber-100 flex flex-col items-center justify-center text-[10px] font-bold text-amber-800 rounded p-1&quot;>✉️ Email Thread<span class=&quot;text-[9px] font-normal text-amber-600&quot;>ganttproj_email.png</span></div>\';">' +
+                                        '<div class="font-hand text-[11px] font-bold text-slate-800 mt-1 text-center truncate">5. Teamwork Dreamwork 🤝</div>' +
+                                        '<div class="text-[9px] text-slate-500 text-center font-sans">Refining the final deliverable</div>' +
+                                    '</div>' +
+
+                                    '<div class="polaroid interactive-img cursor-pointer" onclick="openImageModal(\'first_submission.gif\', \'Submitted on Turnitin Portal! Victory Moment\')">' +
+                                        '<img src="first_submission.gif" alt="First Submission Confirmation" class="w-full h-20 md:h-22 object-cover rounded" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;w-full h-20 bg-amber-100 flex flex-col items-center justify-center text-[10px] font-bold text-amber-800 rounded p-1&quot;>🎉 Submission<span class=&quot;text-[9px] font-normal text-amber-600&quot;>first_submission.gif</span></div>\';">' +
+                                        '<div class="font-hand text-[11px] font-bold text-slate-800 mt-1 text-center truncate">6. Turnitin Submitted! 🎉</div>' +
+                                        '<div class="text-[9px] text-slate-500 text-center font-sans">The celebration message</div>' +
+                                    '</div>' +
+                                '</div>' 
+                            : '') +
+
+                            (pmSubView === 'timeline' ? 
+                                '<div class="space-y-2 max-h-[220px] overflow-y-auto pr-1 text-xs">' +
+                                    '<div class="flex items-start gap-2 bg-white p-2 rounded-xl border border-slate-200 shadow-sm">' +
+                                        '<span class="bg-amber-500 text-white font-bold px-2 py-0.5 rounded text-[10px]">STEP 1</span>' +
+                                        '<div class="flex-1">' +
+                                            '<div class="font-bold text-slate-800">The Cover & Setup</div>' +
+                                            '<p class="text-[11px] text-slate-600">Jeremi generated his very first MBA assignment coversheet (<code class="text-amber-800 font-mono text-[10px]">ganttproj_coversheet.png</code>) and built the project framework (<code class="text-amber-800 font-mono text-[10px]">gantt_toc.jpg</code>).</p>' +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<div class="flex items-start gap-2 bg-white p-2 rounded-xl border border-slate-200 shadow-sm">' +
+                                        '<span class="bg-blue-600 text-white font-bold px-2 py-0.5 rounded text-[10px]">STEP 2</span>' +
+                                        '<div class="flex-1">' +
+                                            '<div class="font-bold text-slate-800">Software & Org Structure</div>' +
+                                            '<p class="text-[11px] text-slate-600">Built out complete resource allocations and schedules in ProjectLibre (<code class="text-amber-800 font-mono text-[10px]">ganttproj_librescreenshot.png</code>) alongside organizational chart structures (<code class="text-amber-800 font-mono text-[10px]">ganttproj_orgchart.png</code>).</p>' +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<div class="flex items-start gap-2 bg-white p-2 rounded-xl border border-slate-200 shadow-sm">' +
+                                        '<span class="bg-emerald-600 text-white font-bold px-2 py-0.5 rounded text-[10px]">STEP 3</span>' +
+                                        '<div class="flex-1">' +
+                                            '<div class="font-bold text-slate-800">Collaborative Push & Turnitin Win</div>' +
+                                            '<p class="text-[11px] text-slate-600">With strong collaboration ("Teamwork made the dream work!" <code class="text-amber-800 font-mono text-[10px]">ganttproj_email.png</code>), the project was finalized and submitted to Turnitin (<code class="text-amber-800 font-mono text-[10px]">first_submission.gif</code>).</p>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>'
+                            : '') +
+
+                            (pmSubView === 'spotlight' ? 
+                                '<div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row items-center gap-3">' +
+                                    '<div class="w-full md:w-1/2 interactive-img cursor-pointer" onclick="openImageModal(\'first_submission.gif\', \'Circled Submission Date & Celebratory WhatsApp Messages\')">' +
+                                        '<img src="first_submission.gif" alt="Turnitin Submission" class="w-full h-36 object-cover rounded-lg border border-amber-300" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;w-full h-36 bg-amber-100 flex items-center justify-center font-bold text-amber-800 rounded&quot;>🎉 Turnitin Portal Submission</div>\';">' +
+                                    '</div>' +
+                                    '<div class="w-full md:w-1/2 text-slate-700 text-xs">' +
+                                        '<div class="font-extrabold text-navy-800 text-sm mb-1">Submission Day Celebration 🏆</div>' +
+                                        '<p class="mb-2 leading-snug">The moment when all the hard work paid off! A screenshot of the Turnitin Portal submission and our WhatsApp chat sharing the relief and triumph.</p>' +
+                                        '<div class="bg-amber-50 p-2 rounded border border-amber-200 text-[11px] font-hand font-bold text-amber-900">' +
+                                            '"First MBA assignment officially submitted! Milestone unlocked!"' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>'
+                            : '') +
+                        '</div>'
+                    : '') +
                 '</div>' +
-                '<div class="sticky-note bg-postit-pink p-3.5 rounded max-w-md mx-auto rotate-[-1deg] text-slate-800 text-base md:text-lg font-bold">' +
-                    '💚 "Finance Class: Where Excel became his best friend and worst enemy at the exact same time!" 😂' +
+
+                '<div class="sticky-note bg-postit-pink p-3 rounded max-w-md mx-auto rotate-[-1deg] text-slate-800 text-sm md:text-base font-bold mt-2">' +
+                    '💚 "Teamwork made the dream work! Seeing all these gantt charts, emails, and screenshots brings back the hard work behind every single detail."' +
                 '</div>' +
             '</div>',
 
-            // PAGE 4: CHAPTER 3 & 4 - LEADERSHIP & CLASS REP
+            // PAGE 4: LEADERSHIP
+            '' +
             '<div class="h-full flex flex-col justify-between">' +
                 '<div>' +
                     '<div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-4">' +
@@ -505,7 +626,8 @@
                 '</div>' +
             '</div>',
 
-            // PAGE 5: CHAPTER 5 & 6 - PYTHON & BIG DATA
+            // PAGE 5: PYTHON & BIG DATA
+            '' +
             '<div class="h-full flex flex-col justify-between">' +
                 '<div>' +
                     '<div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">' +
@@ -536,7 +658,8 @@
                 '</div>' +
             '</div>',
 
-            // PAGE 6: CHAPTER 7 - HARD DAYS & GROWTH
+            // PAGE 6: HARD DAYS
+            '' +
             '<div class="h-full flex flex-col justify-between">' +
                 '<div>' +
                     '<div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-4">' +
@@ -569,7 +692,8 @@
                 '</div>' +
             '</div>',
 
-            // PAGE 7: CHAPTER 8 - GRADUATION DAY
+            // PAGE 7: GRADUATION
+            '' +
             '<div class="h-full flex flex-col justify-between">' +
                 '<div>' +
                     '<div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">' +
@@ -599,34 +723,25 @@
                     '<div class="font-hand text-sm font-bold text-slate-800 mt-2 text-center">"He Did It!"</div>' +
                 '</div>' +
             '</div>'
-        ];
-
-        // Lightbox Image Functions
-        function openImageModal(imgSrc, caption) {
-            const modal = document.getElementById("image-modal");
-            const modalImg = document.getElementById("modal-img");
-            const modalCap = document.getElementById("modal-caption");
-            
-            modalImg.src = imgSrc;
-            modalCap.innerText = caption || "";
-            
-            modal.classList.add("open");
-            playPageSound();
-        }
-
-        function closeImageModal() {
-            const modal = document.getElementById("image-modal");
-            modal.classList.remove("open");
+            ];
         }
 
         function renderPage() {
             const container = document.getElementById("page-content");
-            container.innerHTML = pages[currentPage];
+            const pagesList = getPages();
+            if (container) {
+                container.innerHTML = pagesList[currentPage];
+            }
 
-            document.getElementById("page-number-display").innerText = "Page " + (currentPage + 1) + " of " + pages.length;
+            const pageDisplay = document.getElementById("page-number-display");
+            if (pageDisplay) {
+                pageDisplay.innerText = "Page " + (currentPage + 1) + " of " + pagesList.length;
+            }
 
-            document.getElementById("prev-btn").disabled = (currentPage === 0);
-            document.getElementById("next-btn").disabled = (currentPage === pages.length - 1);
+            const prevBtn = document.getElementById("prev-btn");
+            const nextBtn = document.getElementById("next-btn");
+            if (prevBtn) prevBtn.disabled = (currentPage === 0);
+            if (nextBtn) nextBtn.disabled = (currentPage === pagesList.length - 1);
 
             const tabs = document.querySelectorAll(".nav-tab");
             tabs.forEach((tab, index) => {
@@ -641,7 +756,8 @@
         }
 
         function nextPage() {
-            if (currentPage < pages.length - 1) {
+            const pagesList = getPages();
+            if (currentPage < pagesList.length - 1) {
                 currentPage++;
                 playPageSound();
                 renderPage();
@@ -657,7 +773,8 @@
         }
 
         function goToPage(index) {
-            if (index >= 0 && index < pages.length) {
+            const pagesList = getPages();
+            if (index >= 0 && index < pagesList.length) {
                 currentPage = index;
                 playPageSound();
                 renderPage();
@@ -672,7 +789,6 @@
             }
         }
 
-        // Cover Page 3D Interactive Mouse Tilt
         function handleCoverTilt(e) {
             const card = document.getElementById("cover-card");
             if (!card) return;
@@ -705,7 +821,9 @@
             }
         });
 
-        renderPage();
+        window.onload = function() {
+            renderPage();
+        };
     </script>
 </body>
 </html>
