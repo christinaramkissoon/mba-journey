@@ -210,6 +210,78 @@
             border-color: #1e3a8a;
             box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
         }
+
+
+        /* WEEKLY PAGE LOCKS */
+        .nav-locked {
+            opacity: 0.68;
+            filter: grayscale(0.35);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-locked::after {
+            content: "  🔒";
+        }
+
+        .lock-shake {
+            animation: lockShake 0.45s ease;
+        }
+
+        @keyframes lockShake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-6px); }
+            40% { transform: translateX(6px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
+        }
+
+        .lock-popup {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.78);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .lock-popup-card {
+            background: #fef08a;
+            max-width: 390px;
+            width: 100%;
+            padding: 26px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            transform: rotate(-1deg);
+            border: 2px solid rgba(217, 119, 6, 0.25);
+        }
+
+        .lock-popup-card h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 30px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .lock-popup-card p {
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .lock-popup-card button {
+            margin-top: 18px;
+            background: #1e3a8a;
+            color: white;
+            padding: 9px 22px;
+            border-radius: 999px;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body class="min-h-screen text-slate-800 flex flex-col justify-between p-2 md:p-6">
@@ -238,10 +310,10 @@
             <button onclick="goToPage(1)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">1. Dedication</button>
             <button onclick="goToPage(2)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">2. Decision</button>
             <button onclick="goToPage(3)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">3. Trimester 1</button>
-            <button onclick="goToPage(4)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">4. Trimester 2</button>
-            <button onclick="goToPage(5)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">5. Trimester 3</button>
-            <button onclick="goToPage(6)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">6. Little Things in Between</button>
-            <button onclick="goToPage(7)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">7. Graduation</button>
+            <button id="nav-page-4" onclick="tryOpenPage(4, this)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">4. Trimester 2</button>
+            <button id="nav-page-5" onclick="tryOpenPage(5, this)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">5. Trimester 3</button>
+            <button id="nav-page-6" onclick="tryOpenPage(6, this)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">6. Little Things in Between</button>
+            <button id="nav-page-7" onclick="tryOpenPage(7, this)" class="nav-tab bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-1.5 rounded-full border border-slate-700 transition">7. Graduation</button>
         </div>
     </nav>
 
@@ -278,6 +350,22 @@
 
     <script>
         const GRADUATION_DATE = new Date("November 17, 2026 00:00:00").getTime();
+
+        // WEEKLY PAGE RELEASE DATES
+        // Change only these dates whenever you want to adjust the rollout.
+        const PAGE_RELEASE_DATES = {
+            4: new Date("October 31, 2026 00:00:00").getTime(),
+            5: new Date("November 7, 2026 00:00:00").getTime(),
+            6: new Date("November 14, 2026 00:00:00").getTime(),
+            7: new Date("November 17, 2026 00:00:00").getTime()
+        };
+
+        const PAGE_LOCK_MESSAGES = {
+            4: "Trimester 2 is still developing... come back soon 👀",
+            5: "The story is not ready to enter the deep end just yet 🔐",
+            6: "The little things are still being collected 💌",
+            7: "Graduation is close... but not close enough. Doh rush de ting! 🎓"
+        };
         let currentPage = 0;
         let activeTri1Tab = 'mkt'; // Default active module tab for Page 3 ('mkt', 'fin', 'pm')
         let pmSubView = 'grid'; // Sub-view mode for PM module ('grid', 'timeline', 'spotlight')
@@ -352,6 +440,82 @@
             if (modal) {
                 modal.classList.remove("open");
             }
+        }
+
+        function isPageUnlocked(pageIndex) {
+            const releaseDate = PAGE_RELEASE_DATES[pageIndex];
+            return !releaseDate || Date.now() >= releaseDate;
+        }
+
+        function formatReleaseDate(timestamp) {
+            return new Date(timestamp).toLocaleDateString("en-TT", {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            });
+        }
+
+        function closeLockPopup() {
+            const popup = document.getElementById("lock-popup");
+            if (popup) popup.remove();
+        }
+
+        function showLockMessage(message, releaseDate, titleText) {
+            closeLockPopup();
+
+            const popup = document.createElement("div");
+            popup.id = "lock-popup";
+            popup.className = "lock-popup";
+            popup.innerHTML =
+                '<div class="lock-popup-card">' +
+                    '<div class="text-4xl mb-2">🔒</div>' +
+                    '<h3>' + (titleText || "Not yet, babes!") + '</h3>' +
+                    '<p>' + message + '</p>' +
+                    (releaseDate ? '<p class="font-bold mt-3">Unlocks ' + formatReleaseDate(releaseDate) + '</p>' : '') +
+                    '<button type="button" onclick="closeLockPopup()">Okay, okay 😂</button>' +
+                '</div>';
+
+            popup.addEventListener("click", function(event) {
+                if (event.target === popup) closeLockPopup();
+            });
+
+            document.body.appendChild(popup);
+            playPageSound();
+        }
+
+        function tryOpenPage(pageIndex, buttonElement) {
+            if (isPageUnlocked(pageIndex)) {
+                goToPage(pageIndex);
+                return;
+            }
+
+            if (buttonElement) {
+                buttonElement.classList.remove("lock-shake");
+                void buttonElement.offsetWidth;
+                buttonElement.classList.add("lock-shake");
+            }
+
+            showLockMessage(
+                PAGE_LOCK_MESSAGES[pageIndex],
+                PAGE_RELEASE_DATES[pageIndex],
+                "Not yet, babes!"
+            );
+        }
+
+        function updateLockedNavigation() {
+            Object.keys(PAGE_RELEASE_DATES).forEach(function(pageNumber) {
+                const pageIndex = Number(pageNumber);
+                const button = document.getElementById("nav-page-" + pageNumber);
+                if (!button) return;
+
+                if (isPageUnlocked(pageIndex)) {
+                    button.classList.remove("nav-locked");
+                    button.title = "Open page";
+                } else {
+                    button.classList.add("nav-locked");
+                    button.title = "Unlocks " + formatReleaseDate(PAGE_RELEASE_DATES[pageIndex]);
+                }
+            });
         }
 
         function getPages() {
@@ -717,7 +881,7 @@
                                     '</div>' +
                                     '<div class="w-full md:w-1/2 text-slate-700 text-xs">' +
                                         '<div class="font-extrabold text-navy-800 text-base mb-1">Submission Day Celebration 🏆</div>' +
-                                        '<p class="mb-3 leading-relaxed text-slate-600">The moment when all the hard work paid off!</p>' +
+                                        '<p class="mb-3 leading-relaxed text-slate-600">The moment when all the hard work paid off! Circling the submission deadline date and capturing the victory moment on Turnitin.</p>' +
                                         '<div class="bg-postit-yellow p-3 rounded-lg border border-amber-300 text-xs font-hand font-bold text-slate-800 shadow-sm rotate-[1deg]">' +
                                             '📌 "First MBA assignment officially submitted! Milestone unlocked."' +
                                         '</div>' +
@@ -886,15 +1050,28 @@
                     tab.classList.add("bg-slate-800", "text-slate-300");
                 }
             });
+
+            updateLockedNavigation();
         }
 
         function nextPage() {
             const pagesList = getPages();
-            if (currentPage < pagesList.length - 1) {
-                currentPage++;
-                playPageSound();
-                renderPage();
+            const nextPageIndex = currentPage + 1;
+
+            if (nextPageIndex >= pagesList.length) return;
+
+            if (!isPageUnlocked(nextPageIndex)) {
+                showLockMessage(
+                    PAGE_LOCK_MESSAGES[nextPageIndex],
+                    PAGE_RELEASE_DATES[nextPageIndex],
+                    "Not yet, babes!"
+                );
+                return;
             }
+
+            currentPage = nextPageIndex;
+            playPageSound();
+            renderPage();
         }
 
         function prevPage() {
@@ -907,14 +1084,33 @@
 
         function goToPage(index) {
             const pagesList = getPages();
-            if (index >= 0 && index < pagesList.length) {
-                currentPage = index;
-                playPageSound();
-                renderPage();
+
+            if (index < 0 || index >= pagesList.length) return;
+
+            if (!isPageUnlocked(index)) {
+                showLockMessage(
+                    PAGE_LOCK_MESSAGES[index],
+                    PAGE_RELEASE_DATES[index],
+                    "Not yet, babes!"
+                );
+                return;
             }
+
+            currentPage = index;
+            playPageSound();
+            renderPage();
         }
 
         function toggleEnvelope() {
+            if (Date.now() < GRADUATION_DATE) {
+                showLockMessage(
+                    "This letter is sealed until graduation day. Come back on 17 November 2026 🎓",
+                    GRADUATION_DATE,
+                    "DOH TRY THAT!"
+                );
+                return;
+            }
+
             const env = document.getElementById("envelope-box");
             if (env) {
                 env.classList.toggle("envelope-open");
@@ -956,6 +1152,7 @@
 
         window.onload = function() {
             renderPage();
+            updateLockedNavigation();
         };
     </script>
 </body>
