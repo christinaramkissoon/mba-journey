@@ -629,166 +629,22 @@
                         '</button>' +
                     '</div>' +
 
-                  (activeTri1Tab === 'mkt' ?
+                    (activeTri1Tab === 'mkt' ? 
+                        '<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative animate-fadeIn">' +
+                            '<div class="washi-tape tape-tl" style="width:70px;"></div>' +
+                            '<div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">' +
+                                '<h3 class="font-extrabold text-navy-800 text-base flex items-center gap-2">' +
+                                    '<span class="bg-blue-600 text-white rounded-lg p-1 text-xs">01</span>' +
+                                    '1. Principles of Marketing Management' +
+                                '</h3>' +
+                            '</div>' +
+                            '<p class="text-xs text-slate-600 leading-relaxed mb-4">Mastering core frameworks, target consumer segmentation, positioning strategy, and campaign evaluation.</p>' +
+                            '<div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 text-center text-xs text-slate-500 font-medium">' +
+                                '📷 Click or add Marketing notes, market analysis reports, or assignment submissions here.' +
+                            '</div>' +
+                        '</div>'
+                    : '') +
 
-    '<div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm relative animate-fadeIn">' +
-
-        '<div class="washi-tape tape-tl" style="width:70px;"></div>' +
-
-        '<div class="flex items-center justify-between gap-3 mb-3 border-b border-slate-100 pb-2">' +
-
-            '<h3 class="font-extrabold text-navy-800 text-base flex items-center gap-2">' +
-                '<span class="bg-blue-600 text-white rounded-lg p-1 text-xs">01</span>' +
-                '1. Principles of Marketing Management' +
-            '</h3>' +
-
-            '<div class="bg-yellow-300 px-3 py-1 rounded-full rotate-[-4deg] font-black text-xs shadow whitespace-nowrap">' +
-                '⭐ Grade: 78%' +
-            '</div>' +
-
-        '</div>' +
-
-        '<p class="text-xs text-slate-600 leading-relaxed mb-4">' +
-            'One product concept, one very long night, countless marketing frameworks, and an assignment completed against all odds.' +
-        '</p>' +
-
-        '<div class="relative bg-amber-50/70 border border-amber-200 rounded-xl p-4 mb-4">' +
-
-            '<div class="absolute -top-3 left-1/2 -translate-x-1/2 text-2xl z-20 drop-shadow-md">' +
-                '📌' +
-            '</div>' +
-
-            '<div class="grid grid-cols-2 gap-3 pt-2">' +
-
-                '<div class="polaroid rotate-[-3deg] interactive-img origin-top cursor-pointer" onclick="openImageModal(\'mktcoverpage.jpg\', \'The Marketing Management assignment cover page\')">' +
-                    '<img src="mktcoverpage.jpg" alt="Marketing assignment cover page" class="w-full h-40 object-contain rounded bg-white">' +
-                    '<div class="font-hand text-center mt-2 text-sm font-bold">' +
-                        'Cover Page 📄' +
-                    '</div>' +
-                '</div>' +
-
-                '<div class="polaroid rotate-[3deg] interactive-img origin-top cursor-pointer" onclick="openImageModal(\'mktexecutive.jpg\', \'The Marketing Management executive summary\')">' +
-                    '<img src="mktexecutive.jpg" alt="Marketing assignment executive summary" class="w-full h-40 object-contain rounded bg-white">' +
-                    '<div class="font-hand text-center mt-2 text-sm font-bold">' +
-                        'Executive Summary ✨' +
-                    '</div>' +
-                '</div>' +
-
-            '</div>' +
-
-            '<div class="font-hand text-center text-base font-bold text-amber-900 mt-2">' +
-                'Two pages, one thumbtack, and plenty stress 😂' +
-            '</div>' +
-
-        '</div>' +
-
-        '<div class="relative bg-orange-50 border border-orange-200 rounded-xl p-4 mb-4 overflow-hidden">' +
-
-            '<div class="washi-tape tape-tl" style="width:65px;"></div>' +
-            '<div class="washi-tape tape-tr" style="width:65px;"></div>' +
-
-            '<div class="absolute top-3 right-4 text-3xl rotate-[8deg] drop-shadow-sm">' +
-                '🛒' +
-            '</div>' +
-
-            '<div class="text-xs font-extrabold text-orange-900 uppercase tracking-widest mb-2">' +
-                'The Product Concept' +
-            '</div>' +
-
-            '<div class="polaroid interactive-img max-w-md mx-auto rotate-[-1deg] cursor-pointer" onclick="openImageModal(\'mktproduct.png\', \'The first idea was WILD. The final concept: Cadbury ft. AshWA-GAN-DAAA!\')">' +
-                '<img src="mktproduct.png" alt="Cadbury product concept" class="w-full h-48 object-contain rounded bg-white">' +
-            '</div>' +
-
-            '<div class="sticky-note bg-postit-pink p-3 rounded max-w-sm mx-auto mt-3 rotate-[1deg] text-center text-base font-bold text-slate-800">' +
-                'The first idea was WILD... but the final concept was Cadbury ft. AshWA-GAN-DAAA! 🍫' +
-            '</div>' +
-
-        '</div>' +
-
-        '<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4 items-start">' +
-
-            '<div class="polaroid rotate-[-2deg] interactive-img cursor-pointer" onclick="openImageModal(\'mkttoc.jpg\', \'YOU SEEIN ALL WHAT WAS DONE IN ONEEEE NIGHT BAI?\')">' +
-                '<img src="mkttoc.jpg" alt="Marketing assignment table of contents" class="w-full h-36 object-contain rounded bg-white">' +
-                '<div class="font-hand text-center mt-2 text-sm font-bold leading-tight">' +
-                    'YOU SEEIN ALL WHAT WAS DONE IN ONEEEE NIGHT BAI? 📋' +
-                '</div>' +
-            '</div>' +
-
-            '<div class="polaroid rotate-[2deg] interactive-img cursor-pointer" onclick="openImageModal(\'radar.png\', \'That radar diagram was HELL to do!\')">' +
-                '<img src="radar.png" alt="Marketing radar diagram" class="w-full h-36 object-contain rounded bg-white">' +
-                '<div class="font-hand text-center mt-2 text-sm font-bold">' +
-                    'THAT WAS HELL TO DO 📈' +
-                '</div>' +
-            '</div>' +
-
-            '<div class="polaroid rotate-[-1deg] interactive-img cursor-pointer" onclick="openImageModal(\'BCG.png\', \'We never wanted to see anything from Mondelez again after this assignment!\')">' +
-                '<img src="BCG.png" alt="BCG matrix" class="w-full h-36 object-contain rounded bg-white">' +
-                '<div class="font-hand text-center mt-2 text-sm font-bold leading-tight">' +
-                    'No chocolate or MONDELEZ for a LONG TIME! 🍫' +
-                '</div>' +
-            '</div>' +
-
-        '</div>' +
-
-        '<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4 items-center">' +
-
-            '<div class="relative bg-slate-50 border border-slate-200 rounded-xl p-3">' +
-
-                '<div class="washi-tape tape-tl" style="width:55px;"></div>' +
-                '<div class="washi-tape tape-br" style="width:55px;"></div>' +
-
-                '<div class="interactive-img cursor-pointer" onclick="openImageModal(\'catchphrase.png\', \'\')">' +
-                    '<img src="catchphrase.png" alt="Marketing assignment catchphrase" class="w-full h-36 object-contain rounded bg-white">' +
-                '</div>' +
-
-            '</div>' +
-
-            '<div class="sticky-note bg-postit-yellow p-5 rounded rotate-[2deg] text-center text-slate-800">' +
-                '<div class="text-xl font-extrabold mb-2">' +
-                    'MINTEL REPORT' +
-                '</div>' +
-                '<div class="text-lg font-bold">' +
-                    'PTSD over that word MINTEL now too 😭' +
-                '</div>' +
-            '</div>' +
-
-        '</div>' +
-
-        '<div class="bg-slate-900 text-white rounded-2xl p-4 border border-slate-700 shadow-lg">' +
-
-            '<div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-3">' +
-
-                '<div>' +
-                    '<div class="text-[10px] text-amber-300 uppercase tracking-widest font-extrabold">' +
-                        'Saturday 6th December to Sunday 7th December 2025' +
-                    '</div>' +
-                    '<div class="font-black text-lg">' +
-                        'CHAOS. WE DID NOT SLEEP! 😭' +
-                    '</div>' +
-                '</div>' +
-
-                '<div class="bg-yellow-300 text-slate-950 px-4 py-2 rounded-full font-black text-sm rotate-[3deg] shadow-md whitespace-nowrap">' +
-                    '78% 🏆' +
-                '</div>' +
-
-            '</div>' +
-
-            '<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">' +
-
-                '<div class="polaroid interactive-img rotate-[-2deg] cursor-pointer" onclick="openImageModal(\'mktsubmission.gif\', \'Finished in one night and submitted on 7th December 2025!\')">' +
-                    '<img src="mktsubmission.gif" alt="Marketing assignment submission" class="w-full h-44 object-contain rounded bg-white">' +
-                '</div>' +
-
-                '<div>' +
-
-                    '<div class="sticky-note bg-postit-pink p-4 rounded rotate-[1deg] text-slate-900 text-xl font-bold mb-3">' +
-                        'Literally finished in ONE NIGHT and submitted on 7th December 2025!' +
-                    '</div>' +
-
-                    '<div class="bg-emerald-500/15 border border-emerald-400/40 rounded-xl p-3 text-center">' +
-                        '<div class="text-emerald-300 text-xs font-extrabold uppercase tracking-widest">' +
-                            'Assignment Submitted ✅' +
-                       
 (activeTri1Tab === 'fin' ?
 
 '<div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm relative animate-fadeIn">' +
@@ -1032,16 +888,15 @@
                                     '</div>' +
                                 '</div>'
                             : '') +
-
-                        '</div>' +
-
-                        '<div class="sticky-note bg-postit-pink p-3 rounded max-w-md mx-auto rotate-[-1deg] text-slate-800 text-sm md:text-base font-bold mt-2">' +
-                            '💚 "Teamwork made the dream work. We thought we GANTT do it, but here we are."' +
                         '</div>'
-
                     : '') +
-
                 '</div>' +
+
+                (activeTri1Tab === 'pm' ?
+    '<div class="sticky-note bg-postit-pink p-3 rounded max-w-md mx-auto rotate-[-1deg] text-slate-800 text-sm md:text-base font-bold mt-2">' +
+        '💚 "Teamwork made the dream work. We thought we GANTT do it, but here we are."' +
+    '</div>'
+: '') +
             '</div>',
 
             // PAGE 4: LEADERSHIP
