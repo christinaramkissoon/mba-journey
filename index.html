@@ -421,7 +421,7 @@
             '</div>',
 
             // PAGE 2: CHAPTER 1 - THE DECISION
-            '<div class="h-full flex flex-col justify-between">' +
+           '<div class="h-full flex flex-col justify-between">' +
                 '<div>' +
                     '<div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-4">' +
                         '<span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Page 2 • Chapter 1</span>' +
@@ -432,8 +432,11 @@
                         '<div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">' +
                             '<div class="text-xs font-bold text-blue-900 uppercase tracking-wider mb-1">First Class Kick-off</div>' +
                             '<div class="text-lg font-bold text-slate-800">Thursday, 25th September 2025</div>' +
-                            '<p class="text-sm text-slate-600 mt-2">The official start of the MBA in Finance, Big Data & FinTech at SAMS.</p>' +
-                            '<div class="mt-4 inline-flex items-center gap-2 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-lg text-xs font-bold text-amber-800">🗓️ Calendar Circled: DAY 1</div>' +
+                            '<p class="text-sm text-slate-600 mt-2 mb-3">The official start of the MBA in Finance, Big Data & FinTech at SAMS.</p>' +
+                            '<!-- Animated Calendar GIF replaces the old text badge -->' +
+                            '<div class="mt-2 rounded-xl overflow-hidden border-2 border-amber-400/40 shadow-md interactive-img cursor-pointer max-w-[280px]" onclick="openImageModal(\'firstday_calendar.gif\', \'September 25th, 2025 • Day 1 Circled on Calendar\')">' +
+                                '<img src="firstday_calendar.gif" alt="First Day Calendar Animation" class="w-full h-auto object-cover rounded-lg" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;p-4 bg-slate-100 text-center text-xs text-slate-500 font-bold rounded-lg border border-dashed border-slate-300&quot;>📅 upload firstday_calendar.gif</div>\';">' +
+                            '</div>' +
                         '</div>' +
                         '<div class="polaroid interactive-img rotate-[-2deg] mx-auto max-w-[240px]" onclick="openImageModal(\'semester-printout.jpg\', \'Official Schedule & First Day Kickoff\')">' +
                             '<img src="semester-printout.jpg" alt="Semester Printout" class="w-full h-44 object-cover rounded" onerror="this.onerror=null; this.outerHTML=\'<div class=&quot;w-full h-44 bg-slate-100 flex flex-col items-center justify-center p-3 text-center border-2 border-dashed border-slate-300 rounded&quot;><span class=&quot;text-2xl mb-1&quot;>📄</span><span class=&quot;text-xs text-slate-500 font-bold&quot;>Semester Printout Photo</span></div>\';">' +
@@ -445,7 +448,7 @@
                     '📌 "Every journey begins with a bold decision. You took the leap!"' +
                 '</div>' +
             '</div>',
-
+            
             // PAGE 3: CHAPTER 2 - TRIMESTER 1
             '<div class="h-full flex flex-col justify-between">' +
                 '<div>' +
