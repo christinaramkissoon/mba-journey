@@ -481,21 +481,142 @@
                         '</div>'
                     : '') +
 
-                    (activeTri1Tab === 'fin' ? 
-                        '<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative animate-fadeIn">' +
-                            '<div class="washi-tape tape-tr" style="width:70px;"></div>' +
-                            '<div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">' +
-                                '<h3 class="font-extrabold text-navy-800 text-base flex items-center gap-2">' +
-                                    '<span class="bg-emerald-600 text-white rounded-lg p-1 text-xs">02</span>' +
-                                    '2. Finance for Decision Making' +
-                                '</h3>' +
-                            '</div>' +
-                            '<p class="text-xs text-slate-600 leading-relaxed mb-4">Navigating cash flow valuation, financial modeling in Excel, break-even analysis, and corporate decision matrices.</p>' +
-                            '<div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 text-center text-xs text-slate-500 font-medium">' +
-                                '📈 Click or add Financial models, Excel formulas, valuation charts, or coursework screenshots here.' +
-                            '</div>' +
-                        '</div>'
-                    : '') +
+(activeTri1Tab === 'fin' ?
+    '<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative animate-fadeIn overflow-y-auto">' +
+
+        '<div class="washi-tape tape-tr" style="width:70px;"></div>' +
+
+        '<div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">' +
+            '<h3 class="font-extrabold text-navy-800 text-base flex items-center gap-2">' +
+                '<span class="bg-emerald-600 text-white rounded-lg p-1 text-xs">02</span>' +
+                '2. Finance for Decision Making' +
+            '</h3>' +
+            '<div class="bg-yellow-300 text-slate-900 font-black text-xs px-3 py-1 rounded-full rotate-[-4deg] shadow">⭐ Grade: 67%</div>' +
+        '</div>' +
+
+        '<p class="text-xs text-slate-600 leading-relaxed mb-4">' +
+            'This assignment was more than numbers. It was learning finance, writing an executive summary for the first time, creating a product concept, surviving endless calculations, pushing through moments of self-doubt, and ultimately getting the assignment submitted.' +
+        '</p>' +
+
+        '<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">' +
+
+            '<div class="polaroid interactive-img rotate-[-2deg]" onclick="openImageModal(\'finance_coverpage.jpg\', \'Finance Assignment Cover Page\')">' +
+                'finance_coverpage.jpg' +
+                '<div class="font-hand text-center mt-2 text-sm font-bold">Assignment Cover Page 📄</div>' +
+            '</div>' +
+
+            '<div class="polaroid interactive-img rotate-[2deg]" onclick="openImageModal(\'toc_finance.jpg\', \'Table of Contents\')">' +
+                'toc_finance.jpg' +
+                '<div class="font-hand text-center mt-2 text-sm font-bold">Table of Contents 📋</div>' +
+            '</div>' +
+
+        '</div>' +
+
+        '<div class="sticky-note bg-postit-yellow p-4 rounded rotate-[2deg] mb-5 text-slate-800">' +
+            '<div class="font-bold text-xl">First Ever Executive Summary ✨</div>' +
+            '<div>This was the first executive summary he had ever written. Every expert starts somewhere.</div>' +
+        '</div>' +
+
+        '<div class="polaroid interactive-img max-w-md mx-auto mb-6 rotate-[-1deg]" onclick="openImageModal(\'executivesummary.jpg\', \'First Ever Executive Summary\')">' +
+            '<img src="executivesummary.jpg" class="w-full rounded">' +
+            '<div class="font-hand text-center text-base mt-2 font-bold">First Executive Summary Ever</div>' +
+        '</div>' +
+
+        '<div class="bg-slate-50 rounded-xl border border-slate-200 p-4 mb-5">' +
+            '<div class="font-extrabold text-slate-800 mb-3">The Angostura Assignment 🍹</div>' +
+
+            '<div class="polaroid interactive-img max-w-sm mx-auto rotate-[2deg]" onclick="openImageModal(\'newdrink.png\', \'Product Created For Assignment\')">' +
+                '<img src="newdrink.png" class="w-full rounded">' +
+                '<div class="font-hand text-center text-base mt-2 font-bold">Product Concept Created For The Assignment</div>' +
+            '</div>' +
+        '</div>' +
+
+        '<div class="mb-5">' +
+            '<div class="font-extrabold text-slate-800 mb-3">The Calculations 📈</div>' +
+
+            '<div class="grid grid-cols-2 gap-3">' +
+
+                '<div class="polaroid interactive-img rotate-[-3deg]" onclick="openImageModal(\'calculations.jpg\', \'Financial Calculations\')">' +
+                    'calculations.jpg' +
+                '</div>' +
+
+                '<div class="polaroid interactive-img rotate-[3deg]" onclick="openImageModal(\'calculations2.jpg\', \'More Financial Calculations\')">' +
+                    'calculations2.jpg' +
+                '</div>' +
+
+            '</div>' +
+        '</div>' +
+
+        '<div class="sticky-note bg-postit-pink p-4 rounded rotate-[-2deg] mb-5">' +
+            '<div class="font-bold text-xl">Lecturer Feedback 😂</div>' +
+            '<div>One of the funniest memories from this assignment.</div>' +
+        '</div>' +
+
+        '<div class="polaroid interactive-img max-w-md mx-auto mb-6 rotate-[2deg]" onclick="openImageModal(\'righttrack.jpg\', \'Lecturer Feedback\')">' +
+            '<img src="righttrack.jpg" class="w-full rounded">' +
+            '<div class="font-hand text-center text-base mt-2 font-bold">"Right Track" ✅</div>' +
+        '</div>' +
+
+        '<div class="grid md:grid-cols-2 gap-4 mb-6">' +
+
+            '<div class="polaroid interactive-img rotate-[-2deg]" onclick="openImageModal(\'demotivated.png\', \'Moment Of Doubt\')">' +
+                '<img src="demotivated.png" class="w-full rounded">' +
+            '</div>' +
+
+            '<div class="bg-blue-50 border border-blue-200 rounded-xl p-4 flex flex-col justify-center">' +
+
+                '<div class="font-extrabold text-blue-900 mb-2">A Moment Worth Remembering 💙</div>' +
+
+                '<p class="text-sm text-slate-700 mb-3">' +
+                    'During this assignment there were moments when he felt demotivated and overwhelmed.' +
+                '</p>' +
+
+                '<p class="text-sm text-slate-700 mb-3">' +
+                    'That is exactly why this screenshot belongs here.' +
+                '</p>' +
+
+                '<p class="text-sm text-slate-700 mb-3">' +
+                    'Not because things were easy, but because he kept going anyway.' +
+                '</p>' +
+
+                '<div class="bg-yellow-300 rounded-xl px-4 py-3 font-black text-center text-slate-900 shadow">' +
+                    '⭐ Final Grade: 67%' +
+                '</div>' +
+
+            '</div>' +
+
+        '</div>' +
+
+        '<div class="sticky-note bg-postit-yellow p-4 rounded rotate-[2deg] mb-5 text-center">' +
+            '<div class="font-bold text-xl">Funny thing about this message...</div>' +
+            '<div>' +
+            'He still finished the assignment, earned a 67, and eventually completed the MBA.' +
+            '</div>' +
+        '</div>' +
+
+        '<div class="polaroid interactive-img max-w-sm mx-auto mb-6 rotate-[-3deg]" onclick="openImageModal(\'good_girl_calculations.gif\', \'Inside Joke Archive\')">' +
+            'good_girl_calculations.gif' +
+            '<div class="font-hand text-center text-base mt-2 font-bold">Inside Joke Archive 😂</div>' +
+        '</div>' +
+
+        '<div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 text-center">' +
+
+            '<div class="text-xs uppercase tracking-widest text-emerald-700 font-bold mb-2">Assignment Submitted</div>' +
+
+            '<div class="polaroid max-w-sm mx-auto interactive-img" onclick="openImageModal(\'finance_submission.gif\', \'Submitted On December 4th 2025\')">' +
+                'finance_submission.gif' +
+            '</div>' +
+
+            '<div class="font-bold text-emerald-900 mt-4 text-lg">✅ Submitted on 4th December 2025</div>' +
+
+            '<div class="font-hand text-2xl text-slate-800 mt-2">' +
+                'Another milestone completed 🎉' +
+            '</div>' +
+
+        '</div>' +
+
+    '</div>'
+: '') +
 
                     (activeTri1Tab === 'pm' ? 
                         '<div class="bg-amber-50/60 p-3 md:p-4 rounded-2xl border border-amber-200/80 shadow-inner relative animate-fadeIn">' +
