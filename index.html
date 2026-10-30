@@ -442,11 +442,30 @@
             }
         }
 
-        function isPageUnlocked(pageIndex) {
-            const releaseDate = PAGE_RELEASE_DATES[pageIndex];
-            return !releaseDate || Date.now() >= releaseDate;
-        }
+     // MANUAL PAGE UNLOCK CONTROLS
+// Change false to true only when a page is finished and ready.
+const MANUAL_PAGE_UNLOCKS = {
+    4: false, // Trimester 2
+    5: false, // Trimester 3
+    6: false, // Little Things in Between
+    7: false  // Graduation
+};
 
+function isPageUnlocked(pageIndex) {
+    if (!(pageIndex in MANUAL_PAGE_UNLOCKS)) {
+        return true;
+    }
+
+    return MANUAL_PAGE_UNLOCKS[pageIndex] === true;
+}
+
+function formatReleaseDate(timestamp) {
+    return new Date(timestamp).toLocaleDateString("en-TT", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
+}
         function formatReleaseDate(timestamp) {
             return new Date(timestamp).toLocaleDateString("en-TT", {
                 day: "numeric",
